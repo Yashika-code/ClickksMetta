@@ -67,10 +67,6 @@ export function Footer() {
                   alt="Clicksmeta Logo"
                   className="h-8 w-auto brightness-0 invert"
                 />
-
-                <span className="text-xl font-bold text-white tracking-tight">
-                  Clicks<span className="text-[#06b6d4]">Meta</span>
-                </span>
               </div>
 
               <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-xs">
@@ -147,3 +143,4 @@ export function Footer() {
     </footer>
   )
 }
+
