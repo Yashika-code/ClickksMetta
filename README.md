@@ -37,9 +37,3 @@ This project is a UI showcase for a campaign tracking & analytics platform. Buil
 Yashika
 GitHub: @Yashika-code
 
-
-Want me to add:  
-• project screenshots?  
-• feature GIFs?  
-• Vercel deploy badge?
-```
