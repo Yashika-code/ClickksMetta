@@ -27,7 +27,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0a1628]">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#020617]">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#2563eb]/15 rounded-full blur-[150px] animate-gradient-shift" />
@@ -42,7 +42,7 @@ export function Hero() {
           }}
         />
         {/* Radial gradient overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a1628_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#020617_70%)]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pt-28 pb-20 md:pt-32 md:pb-32 w-full">
@@ -105,7 +105,7 @@ export function Hero() {
                 ].map((gradient, i) => (
                   <div
                     key={i}
-                    className={`w-9 h-9 rounded-full border-2 border-[#0a1628] bg-gradient-to-br ${gradient} shadow-lg`}
+                    className={`w-9 h-9 rounded-full border-2 border-[#020617] bg-gradient-to-br ${gradient} shadow-lg`}
                   />
                 ))}
               </div>
@@ -239,3 +239,4 @@ export function Hero() {
     </section>
   )
 }
+
