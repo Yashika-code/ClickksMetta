@@ -1,16 +1,45 @@
-# React + Vite
+# ClickksMetta 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive landing page for a marketing analytics platform built with **Next.js**, **React**, and **Tailwind CSS**.
 
-Currently, two official plugins are available:
+🌐 Live: https://clickks-metta.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it includes
+- Clean SaaS landing UI  
+- Fully responsive design  
+- Dashboard preview section  
+- Features, FAQ, CTA & Footer  
+- Smooth animations
 
-## React Compiler
+## Tech Stack
+- Next.js  
+- React  
+- Tailwind CSS  
+- Lucide Icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run Locally
 
-## Expanding the ESLint configuration
+```bash
+git clone https://github.com/Yashika-code/ClickksMetta.git
+cd ClickksMetta
+npm install
+npm run dev
+````
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Open → [http://localhost:3000](http://localhost:3000)
+
+## Purpose
+
+This project is a UI showcase for a campaign tracking & analytics platform. Built to practice responsive design and modern frontend development.
+
+## Author
+
+Yashika
+GitHub: @Yashika-code
+
+
+Want me to add:  
+• project screenshots?  
+• feature GIFs?  
+• Vercel deploy badge?
+```
