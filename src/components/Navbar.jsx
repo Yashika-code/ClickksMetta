@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import logo from "../assets/clicksmeta-logo.png"
+
 
 const navLinks = [
   {
@@ -30,19 +32,20 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#0a1628]/95 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/10 py-2"
-          : "bg-transparent py-4"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-[#0a1628]/95 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/10 py-2"
+        : "bg-transparent py-4"
+        }`}
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
-            <span className="text-white font-bold text-sm tracking-tight">CM</span>
-          </div>
           <span className="text-xl font-bold text-white tracking-tight">
-            Clicks<span className="text-[#06b6d4]">Meta</span>
+            <img
+              src={logo}
+              alt="Clicksmeta Logo"
+              className="h-8 w-auto brightness-0 invert"
+            />
+
           </span>
         </a>
 
@@ -108,9 +111,8 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="bg-[#0a1628]/98 backdrop-blur-2xl border-t border-white/5 px-6 pb-6 pt-2">
           {navLinks.map((link) => (
