@@ -83,13 +83,6 @@ export function Footer() {
 
                 <a href="#" className="flex items-center gap-2.5 text-sm text-white/35 hover:text-white/60 transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <Phone className="w-3.5 h-3.5" />
-                  </div>
-                  +1 (555) 000-0000
-                </a>
-
-                <a href="#" className="flex items-center gap-2.5 text-sm text-white/35 hover:text-white/60 transition-colors group">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
                   San Francisco, CA
@@ -143,4 +136,5 @@ export function Footer() {
     </footer>
   )
 }
+
 
