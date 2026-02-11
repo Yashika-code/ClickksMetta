@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import logo from "../assets/clicksmeta-logo.png"
-
 
 const navLinks = [
   {
@@ -15,8 +15,8 @@ const navLinks = [
     label: "Solutions",
     children: ["E-Commerce", "Fintech", "Banking", "Travel", "Media & Network", "SaaS"],
   },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Resources", href: "#features" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Resources", href: "/#features" },
 ]
 
 export function Navbar() {
@@ -30,6 +30,8 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const closeMobile = () => setMobileOpen(false)
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
@@ -37,8 +39,8 @@ export function Navbar() {
         : "bg-transparent py-4"
         }`}
     >
-      <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6">
-        <a href="#" className="flex items-center gap-2.5 group">
+       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
+        <Link to="/" className="flex items-center gap-2.5">
           <span className="text-xl font-bold text-white tracking-tight">
             <img
               src={logo}
@@ -47,39 +49,46 @@ export function Navbar() {
             />
 
           </span>
-        </a>
+        </Link>
 
-        <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <div
-              key={link.label}
-              className="relative"
-              onMouseEnter={() => link.children && setOpenDropdown(link.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
-            >
-              <a
-                href={link.href || "#"}
-                className="px-4 py-2 text-sm text-white/70 hover:text-white transition-colors flex items-center gap-1.5 font-medium rounded-lg hover:bg-white/5"
+          <div className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => {
+            const hasChildren = Boolean(link.children?.length)
+            return (
+              <div
+                key={link.label}
+                className="relative"
+                onMouseEnter={() => hasChildren && setOpenDropdown(link.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
-                {link.label}
-                {link.children && (
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`}
-                  />
+                 {hasChildren ? (
+                  <button
+                    type="button"
+                    className="flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                  >
+                    {link.label}
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`} />
+                  </button>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className="flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
                 )}
-              </a>
-              {link.children && openDropdown === link.label && (
-                <div className="absolute top-full left-0 pt-3 animate-scale-in" style={{ transformOrigin: "top left" }}>
-                  <div className="bg-[#0f1f3d]/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 min-w-[220px] shadow-2xl shadow-black/30">
-                    {link.children.map((child) => (
-                      <a
-                        key={child}
-                        href="#"
-                        className="block px-4 py-2.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200"
-                      >
-                        {child}
-                      </a>
-                    ))}
+              {hasChildren && openDropdown === link.label && (
+                  <div className="absolute left-0 top-full pt-3 animate-scale-in" style={{ transformOrigin: "top left" }}>
+                    <div className="min-w-[220px] rounded-2xl border border-white/10 bg-[#0f1f3d]/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-2xl">
+                      {link.children.map((child) => (
+                        <a
+                          key={child}
+                          href="#"
+                          className="block rounded-xl px-4 py-2.5 text-sm text-white/60 transition-all duration-200 hover:bg-white/5 hover:text-white"
+                        >
+                          {child}
+                        </a>
+                      ))}
                   </div>
                 </div>
               )}
@@ -87,15 +96,19 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden items-center gap-3 lg:flex">
           <Button
+            asChild
             variant="ghost"
-            className="text-white/70 hover:text-white hover:bg-white/10 rounded-full px-5 font-medium"
+            className="rounded-full px-5 font-medium text-white/80 hover:bg-white/10 hover:text-white"
           >
-            Free Trial
+          <Link to="/contact">Let's Talk</Link>
           </Button>
-          <Button className="bg-gradient-to-r from-[#2563eb] to-[#06b6d4] hover:from-[#1d4ed8] hover:to-[#0891b2] text-white border-0 rounded-full px-6 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all">
-            Request Demo
+          <Button
+            asChild
+            className="rounded-full bg-[#7435ff] px-6 text-white shadow-lg shadow-[#7435ff]/30 transition hover:bg-[#6520ff]"
+          >
+            <Link to="/signup">Get Started</Link>
           </Button>
         </div>
 
@@ -114,33 +127,60 @@ export function Navbar() {
         className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           }`}
       >
-        <div className="bg-[#0a1628]/98 backdrop-blur-2xl border-t border-white/5 px-4 sm:px-6 pb-6 pt-2">
-          {navLinks.map((link) => (
-            <div key={link.label} className="py-3 border-b border-white/5">
-              <a
-                href={link.href || "#"}
-                className="text-white/80 text-sm font-medium"
-                onClick={() => !link.children && setMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-              {link.children && (
-                <div className="mt-2 ml-4 flex flex-col gap-1.5">
-                  {link.children.map((child) => (
-                    <a key={child} href="#" className="text-white/40 text-sm hover:text-white transition-colors py-1">
-                      {child}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <div className="flex flex-col gap-3 mt-4">
-            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent rounded-full">
-              Free Trial
+         <div className="border-t border-white/5 bg-[#0a1628]/98 px-4 pb-6 pt-2 backdrop-blur-2xl sm:px-6">
+          {navLinks.map((link) => {
+            const hasChildren = Boolean(link.children?.length)
+            return (
+              <div key={link.label} className="border-b border-white/5 py-3">
+                {hasChildren ? (
+                  <div>
+                    <button
+                      type="button"
+                      className="flex w-full items-center justify-between text-left text-sm font-medium text-white/80"
+                      onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${openDropdown === link.label ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {openDropdown === link.label && (
+                      <div className="mt-2 ml-2 flex flex-col gap-1.5">
+                        {link.children.map((child) => (
+                          <a key={child} href="#" className="py-1 text-sm text-white/50 transition-colors hover:text-white">
+                            {child}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className="text-sm font-medium text-white/80"
+                    onClick={closeMobile}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
+            )
+          })}
+          <div className="mt-4 flex flex-col gap-3">
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full border-white/20 text-white hover:bg-white/10"
+              onClick={closeMobile}
+            >
+              <Link to="/contact">Let's Talk</Link>
             </Button>
-            <Button className="bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white border-0 rounded-full">
-              Request Demo
+            <Button
+              asChild
+              className="rounded-full bg-[#7435ff] text-white hover:bg-[#6520ff]"
+              onClick={closeMobile}
+            >
+              <Link to="/signup">Get Started</Link>
             </Button>
           </div>
         </div>
