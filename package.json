@@ -1,0 +1,13 @@
+{
+  "name": "clickksmetta",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace frontend",
+    "dev": "npm run dev --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend"
+  }
+}
